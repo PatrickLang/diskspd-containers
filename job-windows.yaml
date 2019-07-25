@@ -11,5 +11,6 @@ spec:
       nodeSelector:
         "beta.kubernetes.io/os": windows
       restartPolicy: Never
-  completions: 4
+  parallelism: 4 # Recommend setting to number of nodes
+  completions: 4 # Recommend setting to number of nodes
   backoffLimit: 4
