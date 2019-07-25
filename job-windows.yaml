@@ -4,10 +4,26 @@ metadata:
   name: diskspd-win
 spec:
   template:
+    metadata:
+      labels:
+        app: diskspd-win
     spec:
       containers:
       - name: diskspd
         image: patricklang/diskspd:ltsc2019
+        resources:
+          limits:
+            cpu: 2
+            memory: 2Gi
+        affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - diskspd-win
       nodeSelector:
         "beta.kubernetes.io/os": windows
       restartPolicy: Never
