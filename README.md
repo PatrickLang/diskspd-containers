@@ -213,6 +213,34 @@ thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  AvgLat  | L
 total:        1665220608 |       406548 |      13.23 |    3387.71 |   19.196 |    86.689
 ```
 
+### Laptop with Core i5-5200u, Crucial MX300 1TB SATA SSD
+
+Windows 10 version 1903, Docker for Windows 2.0.0.3, some background apps. It's importatnt to note that running Windows Server 2019 containers uses Hyper-V, which by default with Docker will only use 2 cores. This may be improved by adding more cores to the container config.
+
+```
+CPU |  Usage |  User  |  Kernel |  Idle
+-------------------------------------------
+   0|  72.28%|   5.04%|   67.24%|  27.72%
+   1|  43.58%|   6.61%|   36.96%|  56.42%
+-------------------------------------------
+avg.|  57.93%|   5.83%|   52.10%|  42.07%
+
+Total IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  AvgLat  | LatStdDev |  file
+-----------------------------------------------------------------------------------------------------
+     0 |      1618681856 |       395186 |      12.86 |    3292.79 |    2.427 |     2.514 | testfile.dat (1024MiB)
+     1 |      1896321024 |       462969 |      15.07 |    3857.58 |    2.072 |     2.321 | testfile.dat (1024MiB)
+     2 |      1620803584 |       395704 |      12.88 |    3297.11 |    2.424 |     2.521 | testfile.dat (1024MiB)
+     3 |      1894838272 |       462607 |      15.06 |    3854.56 |    2.073 |     2.319 | testfile.dat (1024MiB)
+     4 |      1620680704 |       395674 |      12.88 |    3296.86 |    2.424 |     2.513 | testfile.dat (1024MiB)
+     5 |      1894092800 |       462425 |      15.05 |    3853.05 |    2.074 |     2.325 | testfile.dat (1024MiB)
+     6 |      1619570688 |       395403 |      12.87 |    3294.60 |    2.425 |     2.513 | testfile.dat (1024MiB)
+     7 |      1896554496 |       463026 |      15.07 |    3858.06 |    2.072 |     2.323 | testfile.dat (1024MiB)
+-----------------------------------------------------------------------------------------------------
+total:       14061543424 |      3432994 |     111.74 |   28604.62 |    2.235 |     2.419
+```
+
+
 ## Building
 
 ### Building for Windows
