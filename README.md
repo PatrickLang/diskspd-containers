@@ -1,20 +1,29 @@
 # diskspd-containers
 
-These are a few containers I built for doing some simple disk benchmarks on different VM configurations running containers.
+These are a few containers I built for doing some simple disk benchmarks on different VM configurations running containers. They use Microsoft's open-source diskspd tool. For more info, check the links in [References](#references).
 
 They are publically available on Docker Hub
 
 - `patricklang/diskspd:ltsc2019` - for testing on Windows 10 (1809 or later) or Windows Server 2019.
 
-> TODO: Linux container
 
-Windows Source: https://github.com/Microsoft/diskspd
-Windows Binaries: https://aka.ms/diskspd 
 
-> TODO: Linux Source: 
-> TODO: Linux Binaries: 
+<!-- TOC -->
 
-## Running Diskspd
+- [Running Diskspd with Docker](#running-diskspd-with-docker)
+- [Running Diskspd as a Kubernetes job](#running-diskspd-as-a-kubernetes-job)
+- [Example Results](#example-results)
+    - [Desktop with Intel Core i7-6700, Micron M600 256GB SATA SSD](#desktop-with-intel-core-i7-6700-micron-m600-256gb-sata-ssd)
+- [Building](#building)
+    - [Building for Windows](#building-for-windows)
+    - [Building for Linux](#building-for-linux)
+- [References](#references)
+
+<!-- /TOC -->
+
+
+
+## Running Diskspd with Docker
 
 If you `docker run` these containers, the default commandline is `diskspd -c1G -d120 -r -w50 -t8 -o8 -b4K -L testfile.dat`.
 
@@ -32,17 +41,15 @@ Caching is enabled
 
 That translates to testing 4k random IO 4k aligned in a 1 gigabyte file, 50% read 50% write, with 8 threads per CPU core, 8 async IOs per thread for a duration of 120 seconds.
 
+## Running Diskspd as a Kubernetes job
 
-### Windows
+> TODO
 
-
-
-
-### Example Results
+## Example Results
 
 Here's a few example results from testing this out. To accurately benchmark these should be run multiple times on unloaded systems to make sure they're consistent. 
 
-#### Desktop with Intel Core i7-6700, Micron M600 256GB SATA SSD
+### Desktop with Intel Core i7-6700, Micron M600 256GB SATA SSD
 Windows 10 version 1903, Docker for Windows 2.0.3.0, lots of stuff including VMs running in the background. It's importatnt to note that running Windows Server 2019 containers uses Hyper-V, which by default with Docker will only use 2 cores. This may be improved by adding more cores to the container config.
 
 ```
@@ -171,4 +178,14 @@ In summary - 48K IOPS
 ### Building for Linux
 
 >> TODO
+
+## References
+
+> TODO: Linux container
+
+Windows Source: https://github.com/Microsoft/diskspd
+Windows Binaries: https://aka.ms/diskspd 
+
+> TODO: Linux Source: 
+> TODO: Linux Binaries: 
 
