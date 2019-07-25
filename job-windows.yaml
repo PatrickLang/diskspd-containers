@@ -11,5 +11,5 @@ spec:
       nodeSelector:
         "beta.kubernetes.io/os": windows
       restartPolicy: Never
-      completions: 4
+  completions: 4
   backoffLimit: 4
