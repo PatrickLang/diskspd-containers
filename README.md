@@ -16,6 +16,7 @@ They are publically available on Docker Hub
     - [Desktop with Intel Core i7-6700, Micron M600 256GB SATA SSD](#desktop-with-intel-core-i7-6700-micron-m600-256gb-sata-ssd)
     - [Azure Standard_D2s_v3, persistent OS disk](#azure-standard_d2s_v3-persistent-os-disk)
     - [Azure Standard_D2s_v3, ephemeral OS disk](#azure-standard_d2s_v3-ephemeral-os-disk)
+    - [Laptop with Core i5-5200u, Crucial MX300 1TB SATA SSD](#laptop-with-core-i5-5200u-crucial-mx300-1tb-sata-ssd)
 - [Building](#building)
     - [Building for Windows](#building-for-windows)
     - [Building for Linux](#building-for-linux)
