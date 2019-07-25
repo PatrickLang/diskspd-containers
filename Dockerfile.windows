@@ -1,0 +1,6 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+RUN mkdir c:\diskspd
+ADD https://gallery.technet.microsoft.com/DiskSpd-A-Robust-Storage-6ef84e62/file/199535/2/DiskSpd-2.0.21a.zip c:/diskspd/diskspd.zip
+RUN powershell.exe -command Expand-Archive c:\diskspd\diskspd.zip
+WORKDIR c:/diskspd/amd64
+CMD diskspd.exe -c1G -d120 -r -w50 -t8 -o8 -b4K -Sh -L testfile.dat

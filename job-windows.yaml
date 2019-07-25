@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: diskspd-win
+spec:
+  template:
+    spec:
+      containers:
+      - name: diskspd
+        image: patricklang/diskspd:ltsc2019
+      nodeSelector:
+        "beta.kubernetes.io/os": windows
+      restartPolicy: Never
+      completions: 4
+  backoffLimit: 4
