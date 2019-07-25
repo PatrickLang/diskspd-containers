@@ -14,6 +14,8 @@ They are publically available on Docker Hub
 - [Running Diskspd as a Kubernetes job](#running-diskspd-as-a-kubernetes-job)
 - [Example Results](#example-results)
     - [Desktop with Intel Core i7-6700, Micron M600 256GB SATA SSD](#desktop-with-intel-core-i7-6700-micron-m600-256gb-sata-ssd)
+    - [Azure Standard_D2s_v3, persistent OS disk](#azure-standard_d2s_v3-persistent-os-disk)
+    - [Azure Standard_D2s_v3, ephemeral OS disk](#azure-standard_d2s_v3-ephemeral-os-disk)
 - [Building](#building)
     - [Building for Windows](#building-for-windows)
     - [Building for Linux](#building-for-linux)
@@ -166,6 +168,50 @@ total:
 In summary - 48K IOPS
 
 
+
+
+### Azure Standard_D2s_v3, persistent OS disk
+
+```
+CPU |  Usage |  User  |  Kernel |  Idle
+-------------------------------------------
+   0|   6.08%|   1.03%|    5.05%|  93.92%
+   1|   4.75%|   2.25%|    2.50%|  95.25%
+-------------------------------------------
+avg.|   5.42%|   1.64%|    3.78%|  94.58%
+
+Total IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  AvgLat  | LatStdDev |  file
+-----------------------------------------------------------------------------------------------------
+     0 |         7168000 |         1750 |       0.06 |      14.58 |  526.106 |  1789.959 | testfile.dat (1024MiB)
+     1 |         6709248 |         1638 |       0.05 |      13.65 |  538.268 |  1827.109 | testfile.dat (1024MiB)
+     2 |         8388608 |         2048 |       0.07 |      17.07 |  432.429 |  1601.380 | testfile.dat (1024MiB)
+     3 |         7426048 |         1813 |       0.06 |      15.11 |  491.993 |  1736.459 | testfile.dat (1024MiB)
+     4 |         7155712 |         1747 |       0.06 |      14.56 |  522.601 |  1953.175 | testfile.dat (1024MiB)
+     5 |         6213632 |         1517 |       0.05 |      12.64 |  592.142 |  2033.150 | testfile.dat (1024MiB)
+     6 |         7163904 |         1749 |       0.06 |      14.57 |  508.612 |  1852.881 | testfile.dat (1024MiB)
+     7 |         7503872 |         1832 |       0.06 |      15.27 |  474.196 |  1705.050 | testfile.dat (1024MiB)
+-----------------------------------------------------------------------------------------------------
+total:          57729024 |        14094 |       0.46 |     117.45 |  507.274 |  1808.311
+```
+
+### Azure Standard_D2s_v3, ephemeral OS disk
+
+```
+Total IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  AvgLat  | LatStdDev |  file
+-----------------------------------------------------------------------------------------------------
+     0 |        76845056 |        18761 |       0.61 |     156.33 |   51.916 |   134.954 | testfile.dat (1024MiB)
+     1 |       326488064 |        79709 |       2.59 |     664.20 |   12.234 |    69.607 | testfile.dat (1024MiB)
+     2 |        75411456 |        18411 |       0.60 |     153.42 |   53.097 |   139.923 | testfile.dat (1024MiB)
+     3 |       338292736 |        82591 |       2.69 |     688.22 |   11.824 |    68.622 | testfile.dat (1024MiB)
+     4 |        86122496 |        21026 |       0.68 |     175.21 |   46.404 |   131.729 | testfile.dat (1024MiB)
+     5 |       337219584 |        82329 |       2.68 |     686.04 |   11.836 |    68.125 | testfile.dat (1024MiB)
+     6 |        86736896 |        21176 |       0.69 |     176.46 |   45.984 |   128.800 | testfile.dat (1024MiB)
+     7 |       338104320 |        82545 |       2.69 |     687.84 |   11.836 |    68.770 | testfile.dat (1024MiB)
+-----------------------------------------------------------------------------------------------------
+total:        1665220608 |       406548 |      13.23 |    3387.71 |   19.196 |    86.689
+```
 
 ## Building
 
